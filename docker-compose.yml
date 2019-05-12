@@ -1,0 +1,68 @@
+version: '3.7'
+services:
+  ipa01:
+    build:
+      context: ./FreeIPA/master/
+      dockerfile: Dockerfile
+    image: ipa-master-latest
+    volumes:
+        - ./FreeIPA/master/data:/data:Z
+        - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    hostname: ipa
+    domainname: example.local
+    stop_signal: RTMIN+3
+    env_file:
+      - ipa.master.env
+    deploy:
+      restart_policy:
+        condition: "any"
+      replicas: 1
+      update_config:
+        parallelism: 1
+        failure_action: rollback
+    networks:
+      - core
+    ports:
+      - "53:53"         # dns bind
+      - "53:53/udp"     # dns bind
+      - "88:88"         # kerberos
+      - "88:88/udp"     # kerberos
+      - "123:123/udp"   # ntp
+      - "389:389"       # ldap directory service
+      - "636:636"       # ldaps directory service
+      - "464:464"       # kerberos authentication
+      - "464:464/udp"   # kerberos authentication
+      - "7389:7389"     # dogtag PKI-CA: Directory Service
+      - "9443:9443"     # Recplica configuration
+      - "9444:9444"     # Recplica configuration
+      - "9445:9445"     # Recplica configuration
+
+  haproxy:
+    build:
+      context: ./HAProxy/
+      dockerfile: Dockerfile
+    image: haproxy-latest
+    networks:
+      - core
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      SYSLOGD: 1
+    deploy:
+      resources:
+        limits:
+          cpus: '0.05'
+          memory: 30M
+        reservations:
+          cpus: '0.02'
+          memory: 20M
+      mode: global
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 1
+        failure_action: rollback
+
+networks:
+  core:
