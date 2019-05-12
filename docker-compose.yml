@@ -8,6 +8,9 @@ services:
     volumes:
         - ./FreeIPA/master/data:/data:Z
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
+        - /dev/urandom:/dev/random:ro
+    sysctls:
+      - net.ipv6.conf.ample.local
     hostname: ipa
     domainname: example.local
     stop_signal: RTMIN+3
