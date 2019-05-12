@@ -1,7 +1,7 @@
---ip-address=10.4.0.64
+--ip-address=192.168.1.150
 --no-ntp
---realm=EXAMPLE.LOCAL
---domain=example.local
+--realm=UBERCORE.LOCAL
+--domain=ubercore.local
 --ds-password=password
 --admin-password=password
 --setup-dns
