@@ -13,7 +13,7 @@ services:
     sysctls:
       - net.ipv6.conf.all.disable_ipv6=0
     hostname: ipa
-    domainname: example.local
+    domainname: ubercore.local
     stop_signal: RTMIN+3
     env_file:
       - ipa.master.env
