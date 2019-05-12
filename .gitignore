@@ -36,7 +36,6 @@ tags
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff
-.idea/**/workspace.xml
 .idea/**/tasks.xml
 .idea/**/dictionaries
 .idea/**/shelf
@@ -84,8 +83,6 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
-### Linux template
-*~
 
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
@@ -192,10 +189,8 @@ $RECYCLE.BIN/
 # *.logs
 
 volumes/
+configuration/
 .idea/
-build/
-config/
-!/config/.gitkeep
-!/build/.gitkeep
-/FreeIPA/master/data/
 *.env
+!.gitkeep
+!*.example
