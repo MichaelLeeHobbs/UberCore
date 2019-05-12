@@ -4,7 +4,7 @@ services:
     build:
       context: ./FreeIPA/master/
       dockerfile: Dockerfile
-    image: ipa-master-latest
+    image: ipa-master:latest
     volumes:
         - ./FreeIPA/master/data:/data:Z
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
@@ -44,7 +44,7 @@ services:
     build:
       context: ./HAProxy/
       dockerfile: Dockerfile
-    image: haproxy-latest
+    image: haproxy:latest
     networks:
       - core
     ports:
