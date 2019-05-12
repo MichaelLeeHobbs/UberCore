@@ -194,3 +194,4 @@ configuration/
 *.env
 !.gitkeep
 !*.example
+!**/*.gitkeep
