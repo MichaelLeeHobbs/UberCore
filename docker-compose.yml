@@ -45,6 +45,8 @@ services:
       context: ./HAProxy/
       dockerfile: Dockerfile
     image: haproxy:latest
+    volumes:
+      - ./configuration/haproxy/ubercore.local.pem:/etc/ssl/ubercore.local.pem:ro
     networks:
       - core
     ports:
