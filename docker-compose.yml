@@ -6,7 +6,7 @@ services:
       dockerfile: Dockerfile
     image: ipa-master:latest
     volumes:
-        - ./FreeIPA/master/data:/data:Z
+        - /var/lib/ipa-master-data:/data:Z
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
         - /dev/urandom:/dev/random:ro
     sysctls:
