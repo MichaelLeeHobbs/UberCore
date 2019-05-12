@@ -192,7 +192,6 @@ volumes/
 configuration/
 .idea/
 *.env
-!.gitkeep
 !*.example
 !**/*.gitkeep
 !/volumes/lychee/conf/.gitkeep
