@@ -10,7 +10,7 @@ services:
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
         - /dev/urandom:/dev/random:ro
     sysctls:
-      - net.ipv6.conf.ample.local
+      - net.ipv6.conf.ample.local=0
     hostname: ipa
     domainname: example.local
     stop_signal: RTMIN+3
