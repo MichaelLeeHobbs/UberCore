@@ -1,0 +1,11 @@
+--ip-address=10.4.0.64
+--no-ntp
+--realm=EXAMPLE.LOCAL
+--domain=example.local
+--ds-password=password
+--admin-password=password
+--setup-dns
+--forwarder=8.8.8.8
+--forwarder=8.8.4.4
+--no-reverse
+--unattended
