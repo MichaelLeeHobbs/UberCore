@@ -17,13 +17,7 @@ services:
     stop_signal: RTMIN+3
     env_file:
       - ipa.master.env
-    deploy:
-      restart_policy:
-        condition: "any"
-      replicas: 1
-      update_config:
-        parallelism: 1
-        failure_action: rollback
+    restart: unless-stopped
     networks:
       - core
     ports:
@@ -50,25 +44,14 @@ services:
       - ./configuration/haproxy/ubercore.local.pem:/etc/ssl/ubercore.local.pem:ro
     networks:
       - core
+      - proxy
     ports:
       - "80:80"
       - "443:443"
     environment:
       SYSLOGD: 1
-    deploy:
-      resources:
-        limits:
-          cpus: '0.05'
-          memory: 30M
-        reservations:
-          cpus: '0.02'
-          memory: 20M
-      mode: global
-      restart_policy:
-        condition: any
-      update_config:
-        parallelism: 1
-        failure_action: rollback
+    restart: unless-stopped
 
 networks:
   core:
+  proxy:
