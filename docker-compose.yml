@@ -7,6 +7,7 @@ services:
     image: ipa-master:latest
     volumes:
         - /var/lib/ipa-master-data:/data:Z
+        - /var/lib/ipa-master-data/journal:/run/log/journal:Z
         - /sys/fs/cgroup:/sys/fs/cgroup:ro
         - /dev/urandom:/dev/random:ro
     sysctls:
