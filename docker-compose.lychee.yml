@@ -12,3 +12,6 @@ services:
     env_file:
       - configuration/lychee/lychee.env
     restart: unless-stopped
+
+networks:
+  proxy:
