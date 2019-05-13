@@ -5,16 +5,10 @@ services:
     image: linuxserver/lychee
     container_name: lychee
     volumes:
-      - volumes/lychee/conf:/conf
-      - volumes/lychee/uploads:/uploads
+      - ./volumes/lychee/conf:/conf
+      - ./volumes/lychee/uploads:/uploads
     networks:
       - proxy
     env_file:
       - configuration/lychee/lychee.env
     restart: unless-stopped
-
-networks:
-  lychee:
-
-volumes:
-  mysql:
