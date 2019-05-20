@@ -61,7 +61,7 @@ services:
     volumes:
       - ./volumes/mysql:/var/lib/mysql
     env_file:
-      - configuration/mssql/mysql.env
+      - configuration/mysql/mysql.env
     networks:
       - mysql
 
