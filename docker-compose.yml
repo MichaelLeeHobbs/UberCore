@@ -43,7 +43,6 @@ services:
     volumes:
       - ./configuration/haproxy/ubercore.local.pem:/etc/ssl/ubercore.local.pem:ro
     networks:
-      - core
       - proxy
       - ipa
     ports:
