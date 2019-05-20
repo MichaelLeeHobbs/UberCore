@@ -196,3 +196,8 @@ configuration/
 !**/*.gitkeep
 !/volumes/lychee/conf/.gitkeep
 !/volumes/lychee/uploads/.gitkeep
+!/configuration/mssql/mssql.env.example
+!/volumes/mssql/.gitkeep
+!/volumes/jsreport/.gitkeep
+!/configuration/jsreport/jsreport.env.example
+!/volumes/jsreport/data/license-key.txt.example
