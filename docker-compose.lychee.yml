@@ -9,9 +9,11 @@ services:
       - ./volumes/lychee/uploads:/uploads
     networks:
       - proxy
+      - mysql
     env_file:
       - configuration/lychee/lychee.env
     restart: unless-stopped
 
 networks:
   proxy:
+  mysql:
