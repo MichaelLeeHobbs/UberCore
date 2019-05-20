@@ -19,7 +19,7 @@ services:
       - ipa.master.env
     restart: unless-stopped
     networks:
-      - core
+      - ipa
     ports:
       - "53:53"         # dns bind
       - "53:53/udp"     # dns bind
@@ -45,6 +45,7 @@ services:
     networks:
       - core
       - proxy
+      - ipa
     ports:
       - "80:80"
       - "443:443"
@@ -52,6 +53,27 @@ services:
       SYSLOGD: 1
     restart: unless-stopped
 
+  mysql:
+    image: mysql
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    volumes:
+      - ./volumes/mssql:/var/lib/mysql
+    env_file:
+      - configuration/mssql/mssql.env
+    networks:
+      - mysql
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    networks:
+      - proxy
+      - mysql
+
 networks:
-  core:
   proxy:
+  mysql:
+  ipa:
