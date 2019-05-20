@@ -1,0 +1,16 @@
+version: '3.7'
+
+services:
+  lychee:
+    image: jsreport/jsreport:2.3.0-full
+    container_name: jsreport
+    volumes:
+      - ./volumes/jsreport:/jsreport
+    networks:
+      - proxy
+    env_file:
+      - configuration/lychee/lychee.env
+    restart: unless-stopped
+
+networks:
+  proxy:
