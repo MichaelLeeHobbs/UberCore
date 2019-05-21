@@ -1,6 +1,7 @@
 version: '3.7'
 services:
   ipa:
+    container_name: ipa
     build:
       context: ./FreeIPA/master/
       dockerfile: Dockerfile
@@ -36,6 +37,7 @@ services:
       - "9445:9445"     # Recplica configuration
 
   haproxy:
+    container_name: haproxy
     build:
       context: ./HAProxy/
       dockerfile: Dockerfile
